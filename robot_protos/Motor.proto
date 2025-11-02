@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package motor_msg;
+import "std.proto";
+
+// ====== DC Motor Command / State ======
+message DcCmd {
+  float position = 1;
+  float torque   = 2;
+  float kp       = 3;
+  float ki       = 4;
+  float kd       = 5;
+}
+
+message DcState {
+  float position = 1;
+  float velocity = 2;
+  float current  = 3;
+  float torque   = 4;
+}
+
+// ====== Servo Command / State ======
+message ServoCmd {
+  uint32 bus = 1;  // 所在 Bus 編號 (1, 2, 3)
+  uint32 id  = 2;  // Bus 上的 Servo ID (1, 2)
+  float position = 3;       // 位置命令
+  float kp = 4;
+  float ki = 5;
+  float kd = 6;
+}
+
+message ServoState {
+  uint32 bus = 1;  // 回報 bus id
+  uint32 id  = 2;  // 回報 servo id
+  float position = 3;
+  float velocity = 4;
+  float current  = 5;
+}
+
+// ====== 每條腿的控制組合 ======
+message LegCmd {
+  DcCmd dc = 1;        // 一顆直流馬達
+  ServoCmd servo = 2;  // 一顆伺服馬達
+}
+
+message LegState {
+  DcState dc = 1;
+  ServoState servo = 2;
+}
+
+// ====== 六條腿的封包 ======
+message MotorCmdStamped {
+  std_msg.Header header = 1;
+  LegCmd L1 = 2;
+  LegCmd L2 = 3;
+  LegCmd L3 = 4;
+  LegCmd R1 = 5;
+  LegCmd R2 = 6;
+  LegCmd R3 = 7;
+}
+
+message MotorStateStamped {
+  std_msg.Header header = 1;
+  LegState L1 = 2;
+  LegState L2 = 3;
+  LegState L3 = 4;
+  LegState R1 = 5;
+  LegState R2 = 6;
+  LegState R3 = 7;
+}
