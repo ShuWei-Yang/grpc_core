@@ -5,17 +5,17 @@ This project is a light-weight publisher-subscriber/service(Server-Client) commu
 Install gRPC: https://grpc.io/docs/languages/cpp/quickstart/  
 
 **Note:**
-* The first step change to "export MY_INSTALL_DIR={your installation path}", e.g. "export MY_INSTALL_DIR=$HOME/kilin_ws/install".
+* The first step change to "export MY_INSTALL_DIR={your installation path}", e.g. "export MY_INSTALL_DIR=$HOME/rinbo_ws/install".
 * There is no need to reinstall cmake if it is version 3.13 or later.
 
-***The following all use "$HOME/kilin_ws/install" to replace {your installation path}.***
+***The following all use "$HOME/rinbo_ws/install" to replace {your installation path}.***
 # compile
 ***Need Compiler of C++ 17 or higher***
 ```
 $ cd grpc_core
 $ mkdir build
 $ cd build
-$ cmake .. -DCMAKE_PREFIX_PATH=$HOME/kilin_ws/install -DCMAKE_INSTALL_PREFIX=$HOME/kilin_ws/install
+$ cmake .. -DCMAKE_PREFIX_PATH=$HOME/rinbo_ws/install -DCMAKE_INSTALL_PREFIX=$HOME/rinbo_ws/install
 $ make -j16
 $ make install
 ```
@@ -23,7 +23,7 @@ $ make install
 # local environment setting
 These will write setting into your bash file.
 ```
-$ echo export PATH=\$HOME/kilin_ws/install/bin:\$PATH >> ~/.bashrc
+$ echo export PATH=\$HOME/rinbo_ws/install/bin:\$PATH >> ~/.bashrc
 $ echo export CORE_LOCAL_IP="127.0.0.1" >> ~/.bashrc
 $ echo export CORE_MASTER_ADDR="127.0.0.1:10010" >> ~/.bashrc
 $ source ~/.bashrc
@@ -36,7 +36,7 @@ For example, if you have device A (**192.168.0.106**) and device B (**192.168.0.
 $ cd grpc_core/example/c++ 
 $ mkdir build 
 $ cd build 
-$ cmake .. -DCMAKE_PREFIX_PATH=$HOME/kilin_ws/install
+$ cmake .. -DCMAKE_PREFIX_PATH=$HOME/rinbo_ws/install
 $ make -j16
 ```
 
