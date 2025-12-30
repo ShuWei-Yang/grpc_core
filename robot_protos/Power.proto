@@ -44,3 +44,4 @@ message PowerStateStamped {
     double v_7  = 21;
     double i_7  = 22;
 }
+
